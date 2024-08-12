@@ -19,8 +19,6 @@ COPY ./dags /opt/airflow/dags
 COPY ./requirements.txt /opt/airflow/requirements.txt
 
 RUN airflow db init
-RUN chown -R airflow:airflow /opt/airflow
-RUN chmod -R 755 /opt/airflow
 
 CMD ["bash", "-c", "airflow scheduler"]
 EXPOSE 8080
