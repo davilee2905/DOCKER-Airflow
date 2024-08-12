@@ -18,9 +18,5 @@ WORKDIR /opt/airflow
 COPY ./dags /opt/airflow/dags
 COPY ./requirements.txt /opt/airflow/requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN airflow db init
-RUN airflow webserver --port 8080
-RUN airflow scheduler
-
+CMD ["bash", "-c", "airflow db init && airflow webserver --port 8080 & airflow scheduler"]
 EXPOSE 8080
