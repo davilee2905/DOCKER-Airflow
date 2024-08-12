@@ -18,5 +18,7 @@ WORKDIR /opt/airflow
 COPY ./dags /opt/airflow/dags
 COPY ./requirements.txt /opt/airflow/requirements.txt
 
-CMD ["bash", "-c", "airflow db init && airflow webserver --port 8080 & airflow scheduler"]
+RUN airflow db init
+
+CMD ["bash", "-c", "airflow webserver --port 8080 & airflow scheduler"]
 EXPOSE 8080
